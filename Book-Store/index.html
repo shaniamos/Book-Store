@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Shop</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="onInit()">
+    <h1>Book Store</h1>
+    <div class="range-flex-container">
+        <div class="range-wrapper">
+            <header class="range-header">
+                <h2>Price range</h2>
+                <p>Use slider or enter min and max Price</p>
+            </header>
+            <div class="price-input" onclick="onPriceInput()">
+                <div class="field">
+                    <span>Min</span>
+                    <input onkeypress="onSetFilter({minPrice: this.value})" type="number" class="input-min" value="25">
+                </div>
+                <div class="seperator">-</div>
+                <div class="field">
+                    <span>Max</span>
+                    <input onchange="onSetFilter({maxPrice: this.value})" type="number" class="input-max" value="75">
+                </div>
+            </div>
+            <div class="slider">
+                <div class="progress"></div>
+            </div>
+            <div class="range-input" onclick="onPriceRange()">
+                <input type="range" class="range-min" min="0" max="100" value="25">
+                <input type="range" class="range-max" min="0" max="100" value="75">
+            </div>
+            <form class="search-field" onsubmit="onSearchBook(event)">
+                <input type="text" name="book-name" placeholder="Seach book by name">
+                <button>Search</button>
+            </form>
+        </div>
+    </div>
+
+    <button title="Add Book" onclick="onAddBook()">Add Book</button>
+
+    <table border="1">
+        <thead>
+            <td>Id</td>
+            <td>Title</td>
+            <td>Price</td>
+            <td>Img</td>
+            <td>Actions</td>
+            <td>Rate</td>
+        </thead>
+        <tbody class="books-container">
+            <!-- <tr>
+                <td>1</td>
+                <td>Learning Laravel</td>
+                <td>18.90</td>
+                <td><img onerror="this.src='img/colorful.png'" src="img/blue.png" alt="blue img"></td>
+                <td>
+                    <table class="actions-container">
+                        <tr>
+                            <td><button class="read-btn" onclick="onReadBook(bookId)">Read</button></td>
+                            <td><button class="update-btn" onclick="onUpdateBook(bookId)">Update</button></td>
+                            <td><button class="delete-btn" onclick="onDeleteBook(bookId)">Delete</button></td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <label class="rating-label" onsubmit="onRateBook(event)">
+                        <strong></strong>
+                        <input
+                          name="book-rate"
+                          class="rating"
+                          max="5"
+                          oninput="this.style.setProperty('--value', this.value)"
+                          step="0.5"
+                          type="range"
+                          value="1">
+                      </label>
+                </td> -->
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="modal">
+        <h3></h3>
+        <h4>Book Price: <span></span> </h4>
+        <h5>Book Description</h5>
+        <p></p>
+        <button onclick="onCloseModal()">Close</button>
+    </div>
+
+    <div class="user-msg"></div>
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/book.service.js"></script>
+    <script src="js/book.controller.js"></script>
+
+</body>
+
+</html>
